@@ -20,6 +20,19 @@ class User{
            self::$totalUsers++;
     }
 
+    public function setUserName(string $username):bool{
+        if((strlen($username)<3)||strlen($username)>30){
+            echo "the username length should be in range of 3-30 characters";
+            return false;
+        }
+        if(!preg_match('/^[a-zA-Z0-9_]+$/')){
+            echo "the username only contain alphabets, numbers and underscores";
+            return false;
+        }
+        $this->username = $username;
+        return true;
+    }
+
     public function displayUser():void{
         echo "<p>Username: $this->username</p>";
          echo "<p>Email: $this->email</p>";
