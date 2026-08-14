@@ -13,9 +13,9 @@ class User{
 
     public function __construct(string $username, string $email, string $password){
         $this->id = self::$nextId++;
-        $this->username = $username;
-         $this->email = $email;
-          $this->password = $password;
+        $this->setUserName($username);
+         $this->setEmail($email);
+          $this->setPassword($password);
            $this->createdAT= date('y-m-d h:i:s');
            self::$totalUsers++;
     }
@@ -31,6 +31,25 @@ class User{
         }
         $this->username = $username;
         return true;
+    }
+
+    public function setEmail(string $email):bool{
+        if(!filter_var($email,FILTER_VALIDATE_EMAIL)){
+            echo "the email is not valid";
+            return false;
+        }
+        $this->email = $email;
+    }
+
+
+    public function setPassword(string $password):bool{
+        if(strlen($password)<6){
+            echo "password length must be greater than 6 characters";
+            return false;
+        }
+        $this->password = password_hash($password , PASSWORD_DEFAULT);
+        return true;
+
     }
 
     public function displayUser():void{
