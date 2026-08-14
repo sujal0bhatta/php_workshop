@@ -25,7 +25,7 @@ class User{
             echo "the username length should be in range of 3-30 characters";
             return false;
         }
-        if(!preg_match('/^[a-zA-Z0-9_]+$/')){
+        if(!preg_match('/^[a-zA-Z0-9_]+$/',$username)){
             echo "the username only contain alphabets, numbers and underscores";
             return false;
         }
@@ -39,6 +39,7 @@ class User{
             return false;
         }
         $this->email = $email;
+        return true;
     }
 
 
@@ -55,6 +56,7 @@ class User{
     public function displayUser():void{
         echo "<p>Username: $this->username</p>";
          echo "<p>Email: $this->email</p>";
+         echo "<p>Password : $this->password</p>";
 
     }
 }
