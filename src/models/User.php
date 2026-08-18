@@ -2,6 +2,7 @@
 
 namespace App\models;
 
+use App\core\Database;
 
 class User{
     private int $id;
@@ -54,6 +55,17 @@ class User{
         $this->password = password_hash($password , PASSWORD_DEFAULT);
         return true;
 
+    }
+
+    public static function create(string $username, string $email, string $password): int|false{
+        $pdo = Database::getInstance();
+        $stmt = $pdo->prepare("INSERT INTO users (username, email, password) VALUES (:username, :email, :password)");
+        $result = $stmt->execute([
+            "username" => trim(strtolower($username)),
+            "email" => trim(strtolower($email)),
+            "password" => password_hash($password, PASSWORD_DEFAULT)
+        ]);
+        return $result ? (int)$pdo->lastInsertID():false;
     }
 
     public function displayUser():void{
