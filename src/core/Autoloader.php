@@ -12,15 +12,10 @@ spl_autoload_register(function ($className) {
     $relativeClass = substr($className, strlen($prefix));
 
     $file = $baseDir .
-            str_replace("\\", "/", $relativeClass) . ".php";
+        str_replace("\\", "/", $relativeClass) .
+        ".php";
 
     if (file_exists($file)) {
         require_once $file;
     }
-
-    echo "<br>";
-    echo $className;
-
-    echo "<br>";
-    echo $relativeClass;
 });
