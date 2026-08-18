@@ -1,5 +1,6 @@
 <?php 
 require_once __DIR__ . '/../src/models/User.php';
+use App\models\User
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,6 +14,8 @@ require_once __DIR__ . '/../src/models/User.php';
 <?php
 $user1 = new User("Jhonthedon", "jhon@banega.don","17675752");
 $user1->displayUser();
+
+
 ?>
     
 </body>
