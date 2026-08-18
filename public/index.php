@@ -15,7 +15,7 @@ use App\core\Database;
 <body>
 
 <?php
-$db = new Database();
+$db = Database::getInstance();
 $pdo = $db->getConnection();
 
 $sql_query = "SELECT * FROM users";
