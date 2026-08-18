@@ -1,6 +1,6 @@
 <?php 
 require_once __DIR__ . '/../src/models/User.php';
-use App\models\User
+use App\models\User as U
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +12,7 @@ use App\models\User
 <body>
 
 <?php
-$user1 = new User("Jhonthedon", "jhon@banega.don","17675752");
+$user1 = new U("Jhonthedon", "jhon@banega.don","17675752");
 $user1->displayUser();
 
 
